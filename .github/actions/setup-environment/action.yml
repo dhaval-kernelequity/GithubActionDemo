@@ -1,19 +1,15 @@
 name: Setup Environment
+description: 'composite run action for setup environment'
 
-on:
-  workflow_call:
+runs:
+  using: "composite"
+  steps:
+    - name: Setup JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
 
-jobs:
-  setup_environment:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-
-    steps:
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
+    - name: Make Gradle executable
+      shell: bash
+      run: chmod +x ./gradlew
