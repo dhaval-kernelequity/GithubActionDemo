@@ -1,10 +1,8 @@
-name: Build
+name: Deploy Staging Build
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    types: [opened, synchronize]
+    branches: [ 'releases/**' ]
 
 jobs:
   build:
@@ -17,8 +15,5 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup-environment
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleStagingRelease

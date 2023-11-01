@@ -1,10 +1,8 @@
-name: Build
+name: Perform PR Check
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    types: [opened, synchronize]
+    branches: [ main, develop, 'releases/**' ]
 
 jobs:
   build:
@@ -21,8 +19,3 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Upload lint results
-        uses: actions/upload-artifact@v3
-        with:
-          name: lint-results
-          path: app/build/reports/lint-results-debug.html
