@@ -1,8 +1,8 @@
 name: Perform PR Check
 
 on:
-  push:
-    branches: [ main, develop, 'releases/**' ]
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   build:

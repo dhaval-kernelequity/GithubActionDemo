@@ -2,8 +2,6 @@ name: Deploy Dev Build
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    types: [opened, synchronize]
 
 jobs:
   build:
