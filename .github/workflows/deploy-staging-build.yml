@@ -12,6 +12,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      - name: Set Release Version
+        run: echo "VERSION_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Create tag
         uses: actions/github-script@v7
         id: create-tag
@@ -21,7 +24,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: '${{env.VERSION_NAME}}',
+              ref: '${{env.VERSION_NAME}}'
               sha: context.sha
             })
         
