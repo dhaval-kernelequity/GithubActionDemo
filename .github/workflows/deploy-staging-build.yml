@@ -12,8 +12,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Environment
-        uses: ./.github/actions/setup-environment
+      - name: Set env
+        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*\/}" >> $GITHUB_ENV
+      
+      - name: Test
+        run: echo $REPOSITORY_NAME
+        
+     # - name: Setup Environment
+     #   uses: ./.github/actions/setup-environment
 
-      - name: Build Debug APK
-        run: ./gradlew assembleStagingRelease
+     # - name: Build Debug APK
+     #   run: ./gradlew assembleStagingRelease
