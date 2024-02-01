@@ -23,7 +23,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: '${{env.VERSION_NAME}}'
+              ref: '${{env.VERSION_NAME}}',
               sha: context.sha
             })
         
