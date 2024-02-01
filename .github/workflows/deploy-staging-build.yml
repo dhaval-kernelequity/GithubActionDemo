@@ -20,7 +20,6 @@ jobs:
         id: create-tag
         with:
           script: |
-            echo 'VERSION_NAME=${GITHUB_REF##*/}'
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
