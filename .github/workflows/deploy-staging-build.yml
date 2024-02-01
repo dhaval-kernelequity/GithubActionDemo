@@ -6,9 +6,8 @@ on:
 
 permissions:
   actions: write
-  contents: read
-  deployments: read
-  id-token: read
+  contents: write
+  deployments: write
   repository-projects: write
 
 jobs:
