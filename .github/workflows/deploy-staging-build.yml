@@ -14,11 +14,11 @@ jobs:
 
       - name: Set Branch Name
         run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-      
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.BRANCH_NAME }}
+          tag_name: v${{ env.BRANCH_NAME }}
           
         
      # - name: Setup Environment
