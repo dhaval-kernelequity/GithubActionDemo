@@ -22,7 +22,7 @@ jobs:
           VERSION_NAME: 'refs/tags/${{env.VERSION_NAME}}'
         with:
           script: |
-            const version = process.env
+            const {version} = process.env
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
