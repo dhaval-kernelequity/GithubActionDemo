@@ -4,6 +4,13 @@ on:
   push:
     branches: [ 'releases/**' ]
 
+permissions:
+  actions: write
+  contents: read
+  deployments: read
+  id-token: read
+  repository-projects: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +30,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{env.VERSION_NAME}}',
+              ref: 'refs/tags/v${{env.VERSION_NAME}}',
               sha: context.sha
             })
         
