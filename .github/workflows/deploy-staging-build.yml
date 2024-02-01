@@ -12,13 +12,22 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Set Branch Name
-        run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: Set Release Version
+        run: echo "VERSION_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - name: Create tag
+        uses: actions/github-script@v7
+        id: create-tag
+        env:
+          VERSION_NAME: ${{env.VERSION_NAME}}
         with:
-          tag_name: v${{ env.BRANCH_NAME }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${VERSION_NAME}',
+              sha: context.sha
+            })
           
         
      # - name: Setup Environment
