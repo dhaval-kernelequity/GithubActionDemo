@@ -18,7 +18,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.BRANCH_NAME }}-server
+          tag_name: ${{ env.BRANCH_NAME }}
+          
         
      # - name: Setup Environment
      #   uses: ./.github/actions/setup-environment
