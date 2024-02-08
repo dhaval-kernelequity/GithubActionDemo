@@ -33,7 +33,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            // test
+            // test2
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
