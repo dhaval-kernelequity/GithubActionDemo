@@ -18,8 +18,16 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Set Release Version
-        run: echo ${{ github.workspace }}
+      - name: Get File
+        run: echo "VERSION_NAME=${{ github.workspace }}/gradle.properties" >> $GITHUB_ENV
+
+      - name: Upload Android Release
+        uses: actions/upload-artifact@v4
+        with:
+          name: TEST_FILE
+          path: ${{env.VERSION_NAME}}
+          if-no-files-found: error
+          compression-level: 0 # no compression
         
      # - name: Setup Environment
      #   uses: ./.github/actions/setup-environment
