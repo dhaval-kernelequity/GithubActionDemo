@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get File
-        run: echo "VERSION_NAME=${{ github.workspace }}/gradle.properties" >> $GITHUB_ENV
+        run: echo "VERSION_NAME=${{ github.workspace }}/*.properties" >> $GITHUB_ENV
 
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
